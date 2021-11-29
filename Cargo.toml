@@ -1,0 +1,23 @@
+[package]
+name = "rwaker"
+version = "0.1.0"
+edition = "2021"
+
+[profile.dev]
+opt-level = 0
+
+[profile.release]
+#opt-level = 3
+opt-level = 'z'
+lto = true
+codegen-units = 1
+panic = "abort"
+
+[dependencies]
+async-std = {version = "1.10.0", features = ["attributes"]}
+surf = {version = "2.3.2", features = ["h1-client"]}
+base64 = { version = "0.13.0" }
+getopts = "0.2"
+serde = {version = "1.0.124", features = ["derive"]}
+serde_json = "1.0.64"
+dirs = "4.0.0"
